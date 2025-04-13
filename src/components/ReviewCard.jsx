@@ -21,7 +21,7 @@ const ReviewCard = ({ name, rating, comment, image, date }) => {
           className="w-12 h-12 rounded-full object-cover mr-4"
         />
         <div>
-          <h4 className="font-semibold text-lg">{name}</h4>
+          <h4 className="font-semibold text-black text-lg">{name}</h4>
           <div className="flex items-center">
             <div className="mr-2">
               {stars}
