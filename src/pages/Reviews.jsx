@@ -5,7 +5,7 @@ import ReviewCard from '../components/ReviewCard';
 const reviewsData = [
   {
     id: 1,
-    name: 'Sarah Johnson',
+    name: 'Sarah ',
     image: '/src/assets/images/reviewer-1.jpg',
     rating: 5,
     review: 'Best kacchi biryani Ive ever tasted! The meat was perfectly tender and the rice was so flavorful. Will definitely come back again and recommend to friends.',
