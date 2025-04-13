@@ -8,7 +8,7 @@ const reviewsData = [
     name: 'Sarah Johnson',
     image: '/src/assets/images/reviewer-1.jpg',
     rating: 5,
-    review: 'Best kacchi biryani I've ever tasted! The meat was perfectly tender and the rice was so flavorful. Will definitely come back again and recommend to friends.',
+    review: 'Best kacchi biryani Ive ever tasted! The meat was perfectly tender and the rice was so flavorful. Will definitely come back again and recommend to friends.',
     date: 'March 15, 2025'
   },
   {
@@ -40,7 +40,7 @@ const reviewsData = [
     name: 'Emily Chen',
     image: '/src/assets/images/reviewer-5.jpg',
     rating: 4,
-    review: 'First time trying kacchi and I'm impressed! The flavors were rich and the portion size was generous. Will definitely return to try more items from the menu.',
+    review: 'First time trying kacchi and Im impressed! The flavors were rich and the portion size was generous. Will definitely return to try more items from the menu.',
     date: 'April 5, 2025'
   },
   {

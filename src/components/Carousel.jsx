@@ -1,44 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const Carousel = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Auto slide functionality
+const Carousel = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  
+  const images = [
+    {
+      id: 1,
+      src: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1887&auto=format&fit=crop',
+      alt: 'Kacchi Biryani'
+    },
+    {
+      id: 2,
+      src: 'https://images.unsplash.com/photo-1631515242802-10382c1df5a4?q=80&w=1888&auto=format&fit=crop',
+      alt: 'Special Mutton Dishes'
+    },
+    {
+      id: 3, 
+      src: 'https://images.unsplash.com/photo-1576621934860-41214aa4cd01?q=80&w=2070&auto=format&fit=crop',
+      alt: 'Delicious Kebabs'
+    }
+  ];
+  
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
     
     return () => clearInterval(interval);
   }, [images.length]);
-
+  
   return (
-    <div className="relative w-full h-full overflow-hidden rounded-lg">
-      <div 
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {images.map((image, index) => (
-          <div key={index} className="min-w-full">
-            <img 
-              src={image} 
-              alt={`Slide ${index + 1}`} 
-              className="w-full h-96 object-cover"
-            />
-          </div>
-        ))}
-      </div>
+    <div className="relative h-80 md:h-96 overflow-hidden rounded-lg">
+      {images.map((image, index) => (
+        <div
+          key={image.id}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            currentImage === index ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <img 
+            src={image.src} 
+            alt={image.alt}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
       
-      {/* Indicators */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
         {images.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => setCurrentImage(index)}
             className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? 'bg-amber-500' : 'bg-white bg-opacity-50'
+              currentImage === index ? 'bg-white' : 'bg-white/50'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

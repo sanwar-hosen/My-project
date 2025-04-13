@@ -1,177 +1,191 @@
-import React, { useState } from 'react';
-
-// Menu data with categories
-const menuData = {
-  kacchi: [
-    {
-      id: 1,
-      name: "Special Kacchi Biryani",
-      description: "Our signature dish with fragrant rice, tender meat, and secret spice blend",
-      price: 12.99,
-      image: "/src/assets/images/kacchi.jpg"
-    },
-    {
-      id: 2,
-      name: "Kacchi Biryani with Boiled Egg",
-      description: "Traditional kacchi biryani served with a boiled egg",
-      price: 13.99,
-      image: "/src/assets/images/kacchi-egg.jpg"
-    },
-    {
-      id: 3,
-      name: "Family Pack Kacchi",
-      description: "Large portion for 3-4 persons with extra meat pieces",
-      price: 29.99,
-      image: "/src/assets/images/kacchi-family.jpg"
-    }
-  ],
-  biryani: [
-    {
-      id: 1,
-      name: "Hyderabadi Dum Biryani",
-      description: "Aromatic rice dish with succulent meat pieces and authentic spices",
-      price: 11.99,
-      image: "/src/assets/images/hyderabadi.jpg"
-    },
-    {
-      id: 2,
-      name: "Chicken Biryani",
-      description: "Flavorful rice cooked with tender chicken and aromatic spices",
-      price: 10.99,
-      image: "/src/assets/images/chicken-biryani.jpg"
-    },
-    {
-      id: 3,
-      name: "Vegetable Biryani",
-      description: "Mixed vegetables cooked with aromatic rice and spices",
-      price: 8.99,
-      image: "/src/assets/images/veg-biryani.jpg"
-    }
-  ],
-  polao: [
-    {
-      id: 1,
-      name: "Special Polao",
-      description: "Fragrant rice cooked with ghee, aromatic spices and tender meat pieces",
-      price: 10.99,
-      image: "/src/assets/images/polao.jpg"
-    },
-    {
-      id: 2,
-      name: "Chicken Polao",
-      description: "Aromatic rice dish with succulent chicken pieces",
-      price: 9.99,
-      image: "/src/assets/images/chicken-polao.jpg"
-    }
-  ],
-  khichuri: [
-    {
-      id: 1,
-      name: "Special Beef Khichuri",
-      description: "Rice and lentil preparation with tender beef and special spices",
-      price: 11.99,
-      image: "/src/assets/images/beef-khichuri.jpg"
-    },
-    {
-      id: 2,
-      name: "Plain Khichuri",
-      description: "Traditional rice and lentil preparation with aromatic spices",
-      price: 7.99,
-      image: "/src/assets/images/plain-khichuri.jpg"
-    }
-  ],
-  sides: [
-    {
-      id: 1,
-      name: "Beef Rezala",
-      description: "Tender beef pieces in a rich yogurt-based gravy",
-      price: 8.99,
-      image: "/src/assets/images/beef-rezala.jpg"
-    },
-    {
-      id: 2,
-      name: "Chicken Roast",
-      description: "Marinated chicken roasted to perfection with special spices",
-      price: 7.99,
-      image: "/src/assets/images/chicken-roast.jpg"
-    },
-    {
-      id: 3,
-      name: "Borhani",
-      description: "Traditional spiced yogurt drink",
-      price: 2.99,
-      image: "/src/assets/images/borhani.jpg"
-    }
-  ]
-};
+import { useState } from 'react';
 
 const Menu = () => {
-  const [activeTab, setActiveTab] = useState('kacchi');
-
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-
+  const [activeCategory, setActiveCategory] = useState('all');
+  
+  const categories = [
+    { id: 'all', name: 'All' },
+    { id: 'biryani', name: 'Biryanis' },
+    { id: 'kebab', name: 'Kebabs' },
+    { id: 'curry', name: 'Curries' },
+    { id: 'sides', name: 'Sides' },
+    { id: 'desserts', name: 'Desserts' },
+    { id: 'drinks', name: 'Drinks' },
+  ];
+  
+  const menuItems = [
+    {
+      id: 1,
+      name: 'Special Kacchi Biryani',
+      description: 'Fragrant basmati rice cooked with tender meat, aromatic spices, and saffron',
+      price: '350',
+      category: 'biryani',
+      image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1887&auto=format&fit=crop',
+      popular: true
+    },
+    {
+      id: 2,
+      name: 'Mutton Tehari',
+      description: 'Slow-cooked rice with premium mutton, traditional spices, and caramelized onions',
+      price: '300',
+      category: 'biryani',
+      image: 'https://images.unsplash.com/photo-1631515242802-10382c1df5a4?q=80&w=1888&auto=format&fit=crop'
+    },
+    {
+      id: 3,
+      name: 'Chicken Roast',
+      description: 'Marinated chicken slowly roasted with a blend of authentic Bengali spices',
+      price: '220',
+      category: 'curry',
+      image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=1470&auto=format&fit=crop'
+    },
+    {
+      id: 4,
+      name: 'Beef Bhuna Khichuri',
+      description: 'Traditional khichuri with slow-cooked beef and aromatic spices',
+      price: '280',
+      category: 'biryani',
+      image: 'https://images.unsplash.com/photo-1630392747604-65c29729baa6?q=80&w=1887&auto=format&fit=crop'
+    },
+    {
+      id: 5,
+      name: 'Shami Kebab',
+      description: 'Minced meat patties with lentils and spices, pan-fried to perfection',
+      price: '180',
+      category: 'kebab',
+      image: 'https://images.unsplash.com/photo-1626429511884-27875f9b83a5?q=80&w=2340&auto=format&fit=crop',
+      popular: true
+    },
+    {
+      id: 6,
+      name: 'Chicken Tikka Kebab',
+      description: 'Tender chicken pieces marinated in yogurt and spices, grilled in tandoor',
+      price: '220',
+      category: 'kebab',
+      image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=1450&auto=format&fit=crop'
+    },
+    {
+      id: 7,
+      name: 'Firni',
+      description: 'Traditional rice pudding dessert with cardamom, saffron and nuts',
+      price: '120',
+      category: 'desserts',
+      image: 'https://images.unsplash.com/photo-1576621934860-41214aa4cd01?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      id: 8,
+      name: 'Jilapi',
+      description: 'Sweet, crispy, and juicy deep-fried pretzel soaked in sugar syrup',
+      price: '100',
+      category: 'desserts',
+      image: 'https://images.unsplash.com/photo-1575519296548-a7047485182c?q=80&w=1964&auto=format&fit=crop'
+    },
+    {
+      id: 9,
+      name: 'Borhani',
+      description: 'Traditional spicy yogurt drink that aids digestion',
+      price: '80',
+      category: 'drinks',
+      image: 'https://images.unsplash.com/photo-1603496987539-dad6699636c4?q=80&w=1974&auto=format&fit=crop',
+      popular: true
+    },
+    {
+      id: 10,
+      name: 'Aloo Bukhara Chutney',
+      description: 'Sweet and tangy sauce made with plums, perfect side for biryanis',
+      price: '60',
+      category: 'sides',
+      image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=1450&auto=format&fit=crop'
+    },
+    {
+      id: 11,
+      name: 'Rezala',
+      description: 'Creamy meat curry with yogurt, cashews, and aromatic spices',
+      price: '280',
+      category: 'curry',
+      image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=2071&auto=format&fit=crop'
+    },
+    {
+      id: 12,
+      name: 'Polao',
+      description: 'Fragrant rice dish cooked with ghee and whole spices',
+      price: '220',
+      category: 'biryani',
+      image: 'https://images.unsplash.com/photo-1634871572365-8bc0578873e8?q=80&w=1974&auto=format&fit=crop'
+    }
+  ];
+  
+  // Filter menu items based on active category
+  const filteredItems = activeCategory === 'all' 
+    ? menuItems 
+    : menuItems.filter(item => item.category === activeCategory);
+  
   return (
-    <div className="min-h-screen py-12">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-amber-800 mb-6">Our Menu</h1>
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-          Explore our wide selection of authentic dishes, prepared with the finest ingredients and 
-          traditional recipes handed down through generations.
-        </p>
+    <section className="py-16 bg-amber-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-amber-900 mb-2">Our Menu</h2>
+          <div className="h-1 w-20 bg-amber-500 mx-auto"></div>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover our authentic dishes made with traditional recipes and premium ingredients
+          </p>
+        </div>
         
-        {/* Menu Categories */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
-          {Object.keys(menuData).map((category) => (
+        {/* Category Filter */}
+        <div className="flex justify-center flex-wrap mb-12 gap-2">
+          {categories.map(category => (
             <button 
-              key={category}
-              onClick={() => handleTabChange(category)}
+              key={category.id}
               className={`px-4 py-2 rounded-full ${
-                activeTab === category 
-                  ? 'bg-amber-600 text-white' 
-                  : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
-              } transition-colors duration-300 capitalize font-medium`}
+                activeCategory === category.id 
+                  ? 'bg-amber-800 text-white' 
+                  : 'bg-white text-amber-800 hover:bg-amber-100'
+              } transition-colors duration-300`}
+              onClick={() => setActiveCategory(category.id)}
             >
-              {category}
+              {category.name}
             </button>
           ))}
         </div>
         
         {/* Menu Items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {menuData[activeTab].map((item) => (
-            <div key={item.id} className="flex bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="w-1/3">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="w-2/3 p-4">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-xl font-semibold text-amber-800">{item.name}</h3>
-                  <span className="text-amber-600 font-bold">${item.price}</span>
+        <div className="grid md:grid-cols-2 gap-6">
+          {filteredItems.map(item => (
+            <div 
+              key={item.id}
+              className="flex bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <img 
+                src={item.image} 
+                alt={item.name}
+                className="h-32 w-32 object-cover"
+              />
+              <div className="p-4 flex-1">
+                <div className="flex justify-between items-start mb-1">
+                  <div>
+                    <h3 className="text-lg font-semibold text-amber-900">{item.name}</h3>
+                    {item.popular && (
+                      <span className="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded">Popular</span>
+                    )}
+                  </div>
+                  <span className="font-bold text-amber-800">৳{item.price}</span>
                 </div>
-                <p className="text-gray-600 mt-2">{item.description}</p>
+                <p className="text-sm text-gray-600 mt-1">{item.description}</p>
               </div>
             </div>
           ))}
         </div>
         
-        {/* Special Notes */}
-        <div className="mt-16 bg-amber-50 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-amber-800 mb-4">Special Notes</h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>All our meat is halal and sourced from trusted local suppliers.</li>
-            <li>Please inform our staff about any allergies or dietary restrictions.</li>
-            <li>Prices may change during special occasions and festivals.</li>
-            <li>Large orders for events require 24-hour advance booking.</li>
-          </ul>
+        <div className="mt-12 text-center">
+          <p className="text-gray-700 mb-4">
+            For catering services and special orders, please contact us
+          </p>
+          <button className="bg-amber-700 hover:bg-amber-800 text-white font-medium py-2 px-6 rounded-md transition duration-300">
+            Contact For Catering
+          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
