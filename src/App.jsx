@@ -8,8 +8,6 @@ import Gallery from './pages/Gallery';
 import Menu from './pages/Menu';
 import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
